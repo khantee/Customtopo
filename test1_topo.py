@@ -1,40 +1,44 @@
-"""Custom topology example
+#!/usr/bin/python
 
-Two directly connected switches plus a host for each switch:
-
-   host --- switch --- switch --- host
-
-Adding the 'topos' dict with a key/value pair to generate our newly defined
-topology enables one to pass in '--topo=mytopo' from the command line.
+"""
+This example shows how to create an empty Mininet object
+(without a topology object) and add nodes to it manually.
 """
 
-from mininet.topo import Topo
 from mininet.net import Mininet
-from mininet.node import OVSSwitch, Controller, RemoteController
-from mininet.topolib import TreeTopo
-from mininet.log import setLogLevel
+from mininet.node import Controller
 from mininet.cli import CLI
+from mininet.log import setLogLevel, info
 
-class MyTopo( Topo ):
-    "Simple topology example." 
-  
-    def __init__( self ):
-        "Create custom topo."
+def emptyNet():
 
-        # Initialize topology
-        Topo.__init__( self )
+    "Create an empty network and add nodes to it."
 
-        # Add hosts and switches
-        leftHost = self.addHost( 'h1' , ip='10.0.0.5/8')
-        rightHost = self.addHost( 'h2',ip='10.0.0.6/8')
-        leftSwitch = self.addSwitch( 's3' )
-        c1 = self.addController('c1',ip='192.168.56.104',port='6633')
-        
+    net = Mininet( controller=RemoteController )
 
-        # Add links
-        self.addLink( leftHost, leftSwitch )
-        self.addLink( rightHost, leftSwitch )
-        self.addLink( c1, leftSwitch )
+    info( '*** Adding controller\n' )
+    net.addController( 'c0',controller=RemoteController,ip="192.168.56.104",port=6633 )
 
+    info( '*** Adding hosts\n' )
+    h1 = net.addHost( 'h1', ip="10.0.0.1" )
+    h2 = net.addHost( 'h2', ip="10.0.0.2" )
 
-topos = { 'mytopo': ( lambda: MyTopo() ) }
+    info( '*** Adding switch\n' )
+    s3 = net.addSwitch( 's3' )
+
+    info( '*** Creating links\n' )
+    net.addLink( h1, s3 )
+    net.addLink( h2, s3 )
+
+    info( '*** Starting network\n')
+    net.start()
+
+    info( '*** Running CLI\n' )
+    CLI( net )
+
+    info( '*** Stopping network' )
+    net.stop()
+
+if __name__ == '__main__':
+    setLogLevel( 'info' )
+    emptyNet()
