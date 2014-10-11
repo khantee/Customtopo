@@ -20,9 +20,8 @@ def emptyNet():
     net.addController( 'c1',controller=RemoteController,ip="192.168.56.101",port=6633 )
 
     info( '*** Adding hosts\n' )
-    h3 = net.addHost( 'h3', ip="10.0.0.3" )
-    h4 = net.addHost( 'h4’, ip="10.0.0.4" )
-
+    h3 = net.addHost( 'h3', ip = "10.0.0.3" )
+    h4 = net.addHost( 'h4', ip = "10.0.0.4" )
     info( '*** Adding switch\n' )
     s2 = net.addSwitch( 's2' ,mac="00:00:00:00:00:02" )
 
