@@ -24,11 +24,11 @@ def emptyNet():
     h2 = net.addHost( 'h2', ip="10.0.0.2" )
 
     info( '*** Adding switch\n' )
-    s3 = net.addSwitch( 's3' )
+    s1 = net.addSwitch( 's1', mac="00:00:00:00:00:01" )
 
     info( '*** Creating links\n' )
-    net.addLink( h1, s3 )
-    net.addLink( h2, s3 )
+    net.addLink( h1, s1 )
+    net.addLink( h2, s1 )
 
     info( '*** Starting network\n')
     net.start()
