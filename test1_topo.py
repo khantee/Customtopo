@@ -20,8 +20,8 @@ class MyTopo( Topo ):
         Topo.__init__( self )
 
         # Add hosts and switches
-        leftHost = self.addHost( 'h1' ,ip=10.0.0.5/8)
-        rightHost = self.addHost( 'h2’,ip=10.0.0.6/8)
+        leftHost = self.addHost( 'h1' , ip='10.0.0.5/8')
+        rightHost = self.addHost( 'h2',ip='10.0.0.6/8')
         leftSwitch = self.addSwitch( 's3' )
         
 
