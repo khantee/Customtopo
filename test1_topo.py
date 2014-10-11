@@ -6,7 +6,7 @@ This example shows how to create an empty Mininet object
 """
 
 from mininet.net import Mininet
-from mininet.node import Controller
+from mininet.node import RemoteController
 from mininet.cli import CLI
 from mininet.log import setLogLevel, info
 
