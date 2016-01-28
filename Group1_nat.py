@@ -7,11 +7,28 @@ Example to create a Mininet topology and connect it to the internet via NAT
 from mininet.cli import CLI
 from mininet.log import lg
 from mininet.node import Node
-from mininet.topolib import TreeNet
+from mininet.net import Mininet
 
 if __name__ == '__main__':
     lg.setLogLevel( 'info')
-    net = TreeNet( depth=1, fanout=4 )
+    net = Mininet( controller=RemoteController )
+
+    info( '*** Adding controller\n' )
+    net.addController( 'c1',controller=RemoteController,ip="10.0.0.118",port=6653 )
+
+    info( '*** Adding hosts\n' )
+    h1 = net.addHost( 'h1', ip="10.0.0.1" )
+    h2 = net.addHost( 'h2', ip="10.0.0.2" )
+
+    info( '*** Adding switch\n' )
+    s1 = net.addSwitch( 's1', mac="00:00:00:00:00:01" )
+
+    info( '*** Creating links\n' )
+    net.addLink( h1, s1 )
+    net.addLink( h2, s1 )
+
+    info( '*** Starting network\n')
+    
     # Add NAT connectivity
     net.addNAT().configDefault()
     net.start()
