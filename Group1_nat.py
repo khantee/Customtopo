@@ -5,7 +5,6 @@ Example to create a Mininet topology and connect it to the internet via NAT
 """
 
 from mininet.cli import CLI
-from mininet.log import lg
 from mininet.node import Node
 from mininet.net import Mininet
 from mininet.node import RemoteController
@@ -13,7 +12,7 @@ from mininet.log import setLogLevel, info
 
 if __name__ == '__main__':
 
-    lg.setLogLevel( 'info')
+    setLogLevel( 'info')
     net = Mininet( controller=RemoteController )
     info( '*** Adding controller\n' )
     net.addController( 'c1',controller=RemoteController,ip="10.0.0.118",port=6653 )
@@ -28,6 +27,8 @@ if __name__ == '__main__':
     info( '*** Creating links\n' )
     net.addLink( h1, s1 )
     net.addLink( h2, s1 )
+
+
 
     info( '*** Starting network\n')
     
