@@ -10,11 +10,15 @@ from mininet.net import Mininet
 from mininet.node import RemoteController
 from mininet.log import setLogLevel, info
 
+
+
 if __name__ == '__main__':
 
     setLogLevel( 'info')
     net = Mininet( controller=RemoteController )
-    info( '*** Adding controller\n' )
+   
+    info( '*** Adding controller\n' ) 
+    net.addNAT().configDefault()
     net.addController( 'c1',controller=RemoteController,ip="10.0.0.118",port=6653 )
 
     info( '*** Adding hosts\n' )
@@ -29,14 +33,12 @@ if __name__ == '__main__':
     net.addLink( h2, s1 )
 
 
-
     info( '*** Starting network\n')
-    
-    # Add NAT connectivity
-    net.addNAT().configDefault()
     net.start()
-    print "*** Hosts are running and should have internet connectivity"
-    print "*** Type 'exit' or control-D to shut down network"
+
+   
+    info( '*** Running CLI\n' )
     CLI( net )
-    # Shut down NAT
+
+    info( '*** Stopping network' )
     net.stop()

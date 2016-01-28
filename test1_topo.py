@@ -31,12 +31,7 @@ def emptyNet():
     net.addLink( h2, s1 )
 
     info( '*** Starting network\n')
-    net.addNAT(     self,
-    name = 'nat0',
-    connect = True,
-    inNamespace = False,
-    params)
-           
+    net.addNAT().configDefault()
     net.start()
 
     info( '*** Running CLI\n' )
