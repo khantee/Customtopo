@@ -29,8 +29,8 @@ if __name__ == '__main__':
     s1 = net.addSwitch( 's1', mac="00:00:00:00:00:01" )
 
     info( '*** Creating links\n' )
-    nat1 = self.addNode( 'nat1', cls=NAT, ip=10.0.0.254,inNamespace=False)
-    self.addLink( nat1, s1 )
+   
+
     net.addLink( h1, s1 )
     net.addLink( h2, s1 )
 
