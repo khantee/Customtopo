@@ -22,8 +22,8 @@ class MyTopo( Topo ):
 
         # Add hosts and switches
         natIP='10.0.0.254'
-        h1 = self.addHost( 'h1', ip = "10.0.0.8"  )
-        h2 = self.addHost( 'h2', ip = "10.0.0.9"  )
+        h1 = self.addHost( 'h1', ip = "10.0.0.8" ,defaultRoute= 'via ' + natIP )
+        h2 = self.addHost( 'h2', ip = "10.0.0.9" ,defaultRoute= 'via ' + natIP )
         s1 = self.addSwitch( 's1', mac = "00:00:00:00:00:01" )
         nat1 = self.addNode('nat1', cls=NAT, ip=natIP,
                              inNamespace=False)
