@@ -19,7 +19,7 @@ if __name__ == '__main__':
    
     info( '*** Adding controller\n' ) 
   
-    net.addController( 'c1',controller=RemoteController,ip="10.0.0.118",port=6653 )
+    net.addController( 'c1',controller=RemoteController,ip="11.0.101.241",port=6653 )
 
     info( '*** Adding hosts\n' )
     h1 = net.addHost( 'h1', ip="10.0.0.1" )
@@ -33,7 +33,7 @@ if __name__ == '__main__':
 
     net.addLink( h1, s1 )
     net.addLink( h2, s1 )
-
+    net.addNAT().configDefault()
 
     info( '*** Starting network\n')
     net.start()
