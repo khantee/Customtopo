@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
-for i in range (1,100):
-	print 'h%d' % i
+	for i  in range (2,101):
+		print 'h%d' % i
 
-print "5555"
+print "55556"
 	
 		

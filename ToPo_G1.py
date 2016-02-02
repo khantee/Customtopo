@@ -23,7 +23,9 @@ def __init__( self ):
         nat1 = self.addNode('nat1', cls=NAT, ip=natIP,
                              inNamespace=False)
         for i  in range (2,101):
-            host  = self.addHost( 'h%d' % i, ip = '10.0.0.%d' % i ,defaultRoute= 'via ' + natIP)
+            host  = self.addHost( 'h%d' % i, 
+                                ip = '10.0.0.%d' % i ,
+                                defaultRoute= 'via ' + natIP)
             self.addLink( host, s1 )
     
         self.addLink( nat1, s1)
