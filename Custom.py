@@ -13,7 +13,6 @@ from mininet.nodelib import NAT
 
 class MyTopo( Topo ):
     "Simple topology example."
-
     def __init__( self ):
         "Create custom topo."
 
