@@ -19,11 +19,11 @@ if __name__ == '__main__':
    
     info( '*** Adding controller\n' ) 
   
-    net.addController( 'c1',controller=RemoteController,ip="11.0.101.241",port=6653 )
+    net.addController( 'c1',controller=RemoteController,ip="10.161.68.127",port=6653 )
 
     info( '*** Adding hosts\n' )
-    h1 = net.addHost( 'h1', ip="10.0.0.1" )
-    h2 = net.addHost( 'h2', ip="10.0.0.2" )
+    h1 = net.addHost( 'h1', ip="12.0.0.1" )
+    h2 = net.addHost( 'h2', ip="12.0.0.2" )
 
     info( '*** Adding switch\n' )
     s1 = net.addSwitch( 's1', mac="00:00:00:00:00:01" )
