@@ -22,6 +22,7 @@ class MyTopo( Topo ):
         natIP='20.0.0.254'
         s1 = self.addSwitch( 's1', mac = "00:00:00:00:00:01" )
         nat1 = self.addNode('nat1', cls=NAT, ip=natIP,inNamespace=False)
+        
         for i range (2,21):
             h = self.addHost( 'h%d' % i, ip = "20.0.0.%d" % i ,defaultRoute = 'via ' + natIP )
             self.addLink( h, s1 )
