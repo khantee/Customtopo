@@ -31,6 +31,9 @@ class MyTopo( Topo ):
             self.addLink( h, s1 )
 
         self.addLink( nat1, s1)
+        h2 = net.get('h1') 
+        result = h2.cmd('ifconfig')
+        print result
      
 
 topos = { 'mytopo': ( lambda: MyTopo() ) }
